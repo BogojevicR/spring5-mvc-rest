@@ -1,12 +1,12 @@
 package com.guru.spring5mvcrest.service;
 
-import com.guru.spring5mvcrest.api.model.CateogryDTO;
+import com.guru.spring5mvcrest.api.v1.model.CategoryDTO;
 
 import java.util.List;
 
 public interface CategoryService {
 
-    List<CateogryDTO> getAllCategories();
+    List<CategoryDTO> getAllCategories();
 
-    CateogryDTO getCategoryByName(String name);
+    CategoryDTO getCategoryByName(String name);
 }

@@ -1,6 +1,6 @@
-package com.guru.spring5mvcrest.api.mapper;
+package com.guru.spring5mvcrest.api.v1.mapper;
 
-import com.guru.spring5mvcrest.api.model.CateogryDTO;
+import com.guru.spring5mvcrest.api.v1.model.CategoryDTO;
 import com.guru.spring5mvcrest.model.Category;
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +20,10 @@ class CategoryMapperTest {
         category.setName(NAME);
         category.setId(ID);
 
-        CateogryDTO cateogryDTO = categoryMapper.categoryToCategoryDTO(category);
+        CategoryDTO categoryDTO = categoryMapper.categoryToCategoryDTO(category);
 
-        assertEquals(ID, cateogryDTO.getId());
-        assertEquals(NAME, cateogryDTO.getName());
+        assertEquals(ID, categoryDTO.getId());
+        assertEquals(NAME, categoryDTO.getName());
     }
 
 }

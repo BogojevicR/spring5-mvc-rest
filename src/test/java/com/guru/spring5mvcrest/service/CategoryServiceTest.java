@@ -1,15 +1,14 @@
 package com.guru.spring5mvcrest.service;
 
-import com.guru.spring5mvcrest.api.mapper.CategoryMapper;
-import com.guru.spring5mvcrest.api.model.CateogryDTO;
+import com.guru.spring5mvcrest.api.v1.mapper.CategoryMapper;
+import com.guru.spring5mvcrest.api.v1.model.CategoryDTO;
 import com.guru.spring5mvcrest.model.Category;
 import com.guru.spring5mvcrest.repository.CategoryRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class CategoryServiceTest {
 
     public static final Long ID = 2L;
@@ -29,7 +29,6 @@ class CategoryServiceTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
         categoryService = new CategoryServiceImpl(CategoryMapper.INSTANCE, categoryRepository);
     }
 
@@ -41,9 +40,9 @@ class CategoryServiceTest {
 
         when(categoryRepository.findAll()).thenReturn(categories);
 
-        List<CateogryDTO> cateogryDTOS = categoryService.getAllCategories();
+        List<CategoryDTO> categoryDTOS = categoryService.getAllCategories();
 
-        assertEquals(3, cateogryDTOS.size());
+        assertEquals(3, categoryDTOS.size());
     }
 
     @Test
@@ -55,10 +54,10 @@ class CategoryServiceTest {
 
         when(categoryRepository.findByName(anyString())).thenReturn(category);
 
-        CateogryDTO cateogryDTO = categoryService.getCategoryByName(NAME);
+        CategoryDTO categoryDTO = categoryService.getCategoryByName(NAME);
 
-        assertEquals(ID, cateogryDTO.getId());
-        assertEquals(NAME, cateogryDTO.getName());
+        assertEquals(ID, categoryDTO.getId());
+        assertEquals(NAME, categoryDTO.getName());
 
     }
 

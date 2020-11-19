@@ -1,9 +1,9 @@
-package com.guru.spring5mvcrest.api.model;
+package com.guru.spring5mvcrest.api.v1.model;
 
 import lombok.Data;
 
 @Data
-public class CateogryDTO {
+public class CategoryDTO {
     private Long id;
     private String name;
 }
